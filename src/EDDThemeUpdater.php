@@ -93,7 +93,7 @@ class EDDThemeUpdater {
 				'</a>',
 				'<a href="' . esc_url( $update_url ) . '"' . $update_onclick . '>',
 				'<strong>',
-				'</strong>',
+				'</strong>'
 			);
 			echo '</div>';
 			echo '<div id="' . esc_attr( $this->theme_slug ) . '_changelog" style="display:none;">';

@@ -158,9 +158,9 @@ class EDDThemeUpdaterAdmin {
 								<?php
 								wp_nonce_field( $this->theme_slug . '_nonce', $this->theme_slug . '_nonce' );
 								if ( 'valid' == $status ) : ?>
-									<input type="submit" class="button-secondary" name="<?php echo esc_attr( $this->theme_slug ); ?>_license_deactivate" value="<?php esc_html( $strings['deactivate-license'] ); ?>"/>
+									<input type="submit" class="button-secondary" name="<?php echo esc_attr( $this->theme_slug ); ?>_license_deactivate" value="<?php echo esc_html( $strings['deactivate-license'] ); ?>"/>
 								<?php else : ?>
-									<input type="submit" class="button-secondary" name="<?php echo esc_attr( $this->theme_slug ); ?>_license_activate" value="<?php esc_html( $strings['activate-license'] ); ?>"/>
+									<input type="submit" class="button-secondary" name="<?php echo esc_attr( $this->theme_slug ); ?>_license_activate" value="<?php echo esc_html( $strings['activate-license'] ); ?>"/>
 								<?php endif; ?>
 							</td>
 						</tr>

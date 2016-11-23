@@ -2,7 +2,7 @@
 /**
  * Easy Digital Downloads Theme Updater
  *
- * @package EDD Sample Theme
+ * @package pt-edd-theme-updater
  */
 
 namespace ProteusThemes\EDDThemeUpdater;
@@ -28,28 +28,27 @@ class EDDThemeUpdaterConfig {
 
 		// Strings.
 		$strings = array(
-			'theme-license'             => __( 'Theme License', 'adrenaline-pt' ),
-			'enter-key'                 => __( 'Enter your theme license key.', 'adrenaline-pt' ),
-			'license-key'               => __( 'License Key', 'adrenaline-pt' ),
-			'license-action'            => __( 'License Action', 'adrenaline-pt' ),
-			'deactivate-license'        => __( 'Deactivate License', 'adrenaline-pt' ),
-			'activate-license'          => __( 'Activate License', 'adrenaline-pt' ),
-			'status-unknown'            => __( 'License status is unknown.', 'adrenaline-pt' ),
-			'renew'                     => __( 'Renew?', 'adrenaline-pt' ),
-			'unlimited'                 => __( 'unlimited', 'adrenaline-pt' ),
-			'license-key-is-active'     => __( 'License key is active.', 'adrenaline-pt' ),
-			'expires%s'                 => __( 'Expires %s.', 'adrenaline-pt' ),
-			'expires-never'             => __( 'Lifetime License.', 'adrenaline-pt' ),
-			'%1$s/%2$-sites'            => __( 'You have %1$s / %2$s sites activated.', 'adrenaline-pt' ),
-			'license-key-expired-%s'    => __( 'License key expired %s.', 'adrenaline-pt' ),
-			'license-key-expired'       => __( 'License key has expired.', 'adrenaline-pt' ),
-			'license-keys-do-not-match' => __( 'License keys do not match.', 'adrenaline-pt' ),
-			'license-is-inactive'       => __( 'License is inactive.', 'adrenaline-pt' ),
-			'license-key-is-disabled'   => __( 'License key is disabled.', 'adrenaline-pt' ),
-			'site-is-inactive'          => __( 'Site is inactive.', 'adrenaline-pt' ),
-			'license-status-unknown'    => __( 'License status is unknown.', 'adrenaline-pt' ),
-			'update-notice'             => __( "Updating this theme will lose any customizations you have made. 'Cancel' to stop, 'OK' to update.", 'adrenaline-pt' ),
-			'update-available'          => __( '<strong>%1$s %2$s</strong> is available. <a href="%3$s" class="thickbox" title="%4s">Check out what\'s new</a> or <a href="%5$s"%6$s>update now</a>.', 'adrenaline-pt' ),
+			'theme-license'             => esc_html__( 'Theme License', 'pt-edd-theme-updater' ),
+			'enter-key'                 => esc_html__( 'Enter your theme license key.', 'pt-edd-theme-updater' ),
+			'license-key'               => esc_html__( 'License Key', 'pt-edd-theme-updater' ),
+			'license-action'            => esc_html__( 'License Action', 'pt-edd-theme-updater' ),
+			'deactivate-license'        => esc_html__( 'Deactivate License', 'pt-edd-theme-updater' ),
+			'activate-license'          => esc_html__( 'Activate License', 'pt-edd-theme-updater' ),
+			'status-unknown'            => esc_html__( 'License status is unknown.', 'pt-edd-theme-updater' ),
+			'renew'                     => esc_html__( 'Renew?', 'pt-edd-theme-updater' ),
+			'unlimited'                 => esc_html__( 'unlimited', 'pt-edd-theme-updater' ),
+			'license-key-is-active'     => esc_html__( 'License key is active.', 'pt-edd-theme-updater' ),
+			'expires%s'                 => esc_html__( 'Expires %s.', 'pt-edd-theme-updater' ),
+			'expires-never'             => esc_html__( 'Lifetime License.', 'pt-edd-theme-updater' ),
+			'%1$s/%2$-sites'            => esc_html__( 'You have %1$s / %2$s sites activated.', 'pt-edd-theme-updater' ),
+			'license-key-expired-%s'    => esc_html__( 'License key expired %s.', 'pt-edd-theme-updater' ),
+			'license-key-expired'       => esc_html__( 'License key has expired.', 'pt-edd-theme-updater' ),
+			'license-keys-do-not-match' => esc_html__( 'License keys do not match.', 'pt-edd-theme-updater' ),
+			'license-is-inactive'       => esc_html__( 'License is inactive.', 'pt-edd-theme-updater' ),
+			'license-key-is-disabled'   => esc_html__( 'License key is disabled.', 'pt-edd-theme-updater' ),
+			'site-is-inactive'          => esc_html__( 'Site is inactive.', 'pt-edd-theme-updater' ),
+			'license-status-unknown'    => esc_html__( 'License status is unknown.', 'pt-edd-theme-updater' ),
+			'update-notice'             => esc_html__( "Updating this theme will lose any customizations you have made. 'Cancel' to stop, 'OK' to update.", 'pt-edd-theme-updater' ),
 		);
 
 		// Loads the updater classes.

@@ -2,8 +2,7 @@
 /**
  * Theme updater class.
  *
- * @package EDD Sample Theme
- * @version 1.0
+ * @package pt-edd-theme-updater
  */
 
 namespace ProteusThemes\EDDThemeUpdater;
@@ -23,15 +22,15 @@ class EDDThemeUpdater {
 	/**
 	 * Initiate the Theme updater
 	 *
-	 * @param array $args    Array of arguments from the theme requesting an update check
-	 * @param array $strings Strings for the update process
+	 * @param array $args    Array of arguments from the theme requesting an update check.
+	 * @param array $strings Strings for the update process.
 	 */
 	function __construct( $args = array(), $strings = array() ) {
 
 		$defaults = array(
 			'remote_api_url' => 'http://easydigitaldownloads.com',
 			'request_data'   => array(),
-			'theme_slug'     => get_template(), // use get_stylesheet() for child theme updates
+			'theme_slug'     => get_template(), // Use get_stylesheet() for child theme updates.
 			'item_name'      => '',
 			'license'        => '',
 			'version'        => '',
@@ -57,7 +56,7 @@ class EDDThemeUpdater {
 	}
 
 	/**
-	 * Show the update notification when neecessary
+	 * Show the update notification when neecessary.
 	 *
 	 * @return void
 	 */
@@ -67,12 +66,11 @@ class EDDThemeUpdater {
 	}
 
 	/**
-	 * Display the update notifications
+	 * Display the update notifications.
 	 *
 	 * @return void
 	 */
 	function update_nag() {
-
 		$strings      = $this->strings;
 		$theme        = wp_get_theme( $this->theme_slug );
 		$api_response = get_transient( $this->response_key );
@@ -88,17 +86,18 @@ class EDDThemeUpdater {
 
 			echo '<div id="update-nag">';
 			printf(
-				$strings['update-available'],
-				$theme->get( 'Name' ),
-				$api_response->new_version,
-				'#TB_inline?width=640&amp;inlineId=' . $this->theme_slug . '_changelog',
-				$theme->get( 'Name' ),
-				$update_url,
-				$update_onclick
+				esc_html__( '%6$s%1$s %2$s%7$s is available. %3$sCheck out what\'s new%4$s or %5$supdate now%4$s.', 'pt-edd-theme-updater' ),
+				esc_html( $theme->get( 'Name' ) ),
+				esc_html( $api_response->new_version ),
+				'<a href="#TB_inline?width=640&amp;inlineId=' . esc_attr( $this->theme_slug ) . '_changelog" class="thickbox" title="' . esc_html( $theme->get( 'Name' ) ) . '">',
+				'</a>',
+				'<a href="' . esc_url( $update_url ) . '"' . $update_onclick . '>',
+				'<strong>',
+				'</strong>',
 			);
 			echo '</div>';
-			echo '<div id="' . $this->theme_slug . '_' . 'changelog" style="display:none;">';
-			echo wpautop( $api_response->sections['changelog'] );
+			echo '<div id="' . esc_attr( $this->theme_slug ) . '_changelog" style="display:none;">';
+			echo wp_kses_post( wpautop( $api_response->sections['changelog'] ) );
 			echo '</div>';
 		}
 	}
@@ -107,8 +106,8 @@ class EDDThemeUpdater {
 	 * Update the theme update transient with the response from the version check
 	 *
 	 * @param  array $value   The default update values.
-	 * @return array|boolean  If an update is available, returns the update parameters, if no update is needed returns false, if
-	 *                        the request fails returns false.
+	 * @return array|boolean  If an update is available, returns the update parameters, if no update is needed returns false,
+	 *                        if the request fails returns false.
 	 */
 	function theme_update_transient( $value ) {
 		$update_data = $this->check_for_update();
@@ -119,7 +118,7 @@ class EDDThemeUpdater {
 	}
 
 	/**
-	 * Remove the update data for the theme
+	 * Remove the update data for the theme.
 	 *
 	 * @return void
 	 */
@@ -130,8 +129,8 @@ class EDDThemeUpdater {
 	/**
 	 * Call the EDD SL API (using the URL in the construct) to get the latest version information
 	 *
-	 * @return array|boolean  If an update is available, returns the update parameters, if no update is needed returns false, if
-	 *                        the request fails returns false.
+	 * @return array|boolean  If an update is available, returns the update parameters, if no update is needed returns false,
+	 *                        if the request fails returns false.
 	 */
 	function check_for_update() {
 
@@ -150,7 +149,7 @@ class EDDThemeUpdater {
 
 			$response = wp_remote_post( $this->remote_api_url, array( 'timeout' => 15, 'body' => $api_params ) );
 
-			// Make sure the response was successful
+			// Make sure the response was successful.
 			if ( is_wp_error( $response ) || 200 != wp_remote_retrieve_response_code( $response ) ) {
 				$failed = true;
 			}
@@ -161,7 +160,7 @@ class EDDThemeUpdater {
 				$failed = true;
 			}
 
-			// If the response failed, try again in 30 minutes
+			// If the response failed, try again in 30 minutes.
 			if ( $failed ) {
 				$data = new stdClass;
 				$data->new_version = $this->version;
@@ -169,7 +168,7 @@ class EDDThemeUpdater {
 				return false;
 			}
 
-			// If the status is 'ok', return the update arguments
+			// If the status is 'ok', return the update arguments.
 			if ( ! $failed ) {
 				$update_data->sections = maybe_unserialize( $update_data->sections );
 				set_transient( $this->response_key, $update_data, strtotime( '+12 hours', current_time( 'timestamp' ) ) );
@@ -182,5 +181,4 @@ class EDDThemeUpdater {
 
 		return (array) $update_data;
 	}
-
 }
